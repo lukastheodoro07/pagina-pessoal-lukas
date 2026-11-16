@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça Lukas, seus desenhos, histórias favoritas e lugares que deseja conhecer.">
+    <title>Lukas | Apresentação pessoal</title>
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --fundo: #101018;
+            --superficie: #1b1b29;
+            --borda: #383249;
+            --texto: #eeeaf5;
+            --secundario: #c3bdd0;
+            --destaque: #c4a1ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(ellipse at top left, #322052, transparent 55%),
+                var(--fundo);
+            color: var(--texto);
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--destaque);
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--destaque);
+            outline-offset: 5px;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin-inline: auto;
+        }
+
+        .topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding-block: 24px;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .logo {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--secundario);
+            font-size: .95rem;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: var(--destaque);
+        }
+
+        .apresentacao {
+            display: grid;
+            grid-template-columns: 1fr 280px;
+            align-items: center;
+            gap: 48px;
+            padding-block: 64px;
+        }
+
+        .etiqueta {
+            margin: 0 0 12px;
+            color: var(--destaque);
+            font-size: .8rem;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0 0 20px;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            line-height: 1.1;
+            letter-spacing: -.04em;
+        }
+
+        h1 span {
+            color: var(--destaque);
+        }
+
+        p {
+            color: var(--secundario);
+        }
+
+        .apresentacao p {
+            max-width: 620px;
+        }
+
+        .foto-perfil {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 3px solid var(--destaque);
+            border-radius: 28px;
+            box-shadow: 12px 12px 0 #322447;
+        }
+
+        .interesses {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 0;
+            margin: 24px 0 0;
+            list-style: none;
+        }
+
+        .interesses li {
+            padding: 5px 14px;
+            background: #292039;
+            border: 1px solid #49355e;
+            border-radius: 30px;
+            color: #dfccff;
+            font-size: .85rem;
+        }
+
+        .secao {
+            padding-block: 24px 40px;
+        }
+
+        .titulo-secao {
+            margin: 0 0 24px;
+            font-size: 1.8rem;
+            letter-spacing: -.03em;
+        }
+
+        .grade {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .cartao {
+            min-width: 0;
+            overflow: hidden;
+            background: var(--superficie);
+            border: 1px solid var(--borda);
+            border-radius: 20px;
+        }
+
+        .cartao img {
+            display: block;
+            width: 100%;
+            height: 300px;
+            object-fit: contain;
+            padding: 16px;
+            background: #14141f;
+        }
+
+        .cartao.viagem img {
+            object-fit: cover;
+            padding: 0;
+        }
+
+        .conteudo {
+            padding: 24px;
+        }
+
+        .categoria {
+            margin: 0 0 8px;
+            color: var(--destaque);
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            line-height: 1.4;
+        }
+
+        .conteudo p {
+            margin-block: 12px 20px;
+        }
+
+        .botao {
+            display: inline-block;
+            max-width: 100%;
+            padding: 10px 18px;
+            background: #352548;
+            border: 1px solid #67468b;
+            border-radius: 10px;
+            color: #e6d4ff;
+            font-size: .9rem;
+            font-weight: 600;
+            text-decoration: none;
+            overflow-wrap: anywhere;
+            transition: background .2s;
+        }
+
+        .botao:hover {
+            background: #503469;
+        }
+
+        footer {
+            margin-top: 24px;
+            padding-block: 32px;
+            border-top: 1px solid var(--borda);
+            text-align: center;
+        }
+
+        footer p {
+            margin: 0 0 12px;
+            font-size: .9rem;
+        }
+
+        @media (max-width: 700px) {
+            .apresentacao {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                padding-block: 40px;
+            }
+
+            .foto-perfil {
+                width: min(280px, 90%);
+                margin-inline: auto;
+            }
+
+            .grade {
+                grid-template-columns: 1fr;
+            }
+
+            .cartao img {
+                height: 260px;
+            }
+
+            .conteudo {
+                padding: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .botao {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body id="inicio">
+    <div class="container">
+        <header class="topo">
+            <a class="logo" href="#inicio">Lukas<span aria-hidden="true"> ✦</span></a>
+
+            <nav aria-label="Navegação principal">
+                <a href="#sobre">Sobre mim</a>
+                <a href="#favoritos">Favoritos</a>
+                <a href="#viagens">Viagens</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="apresentacao" id="sobre" aria-labelledby="titulo">
+                <div>
+                    <p class="etiqueta">Apresentação pessoal</p>
+                    <h1 id="titulo">Olá, eu sou o <span>Lukas.</span></h1>
+
+                    <p>
+                        Meu nome é Lukas Theodoro Fernandes, tenho 15 anos
+                        e moro em São Paulo. Sou fã de Undertale e de jogos
+                        indies em geral. Gosto muito de desenhar e programar.
+                    </p>
+
+                    <p>
+                        Já participei de alguns torneios online de Yu-Gi-Oh!
+                        Meu personagem favorito é o Kim Dokja — talvez eu
+                        tenha um pouco de hiperfoco nele.
+                    </p>
+
+                    <ul class="interesses" aria-label="Meus interesses">
+                        <li>Jogos indies</li>
+                        <li>Desenho</li>
+                        <li>Programação</li>
+                        <li>Yu-Gi-Oh!</li>
+                    </ul>
+                </div>
+
+                <img
+                    class="foto-perfil"
+                    src="WhatsApp Image 2026-10-14 at 22.58.57.jpeg"
+                    alt="Foto de minha"
+                >
+            </section>
+
+            <section class="secao" id="favoritos" aria-labelledby="titulo-favoritos">
+                <p class="etiqueta">Um pouco do meu mundo</p>
+                <h2 class="titulo-secao" id="titulo-favoritos">Desenhos e favoritos</h2>
+
+                <div class="grade">
+                    <article class="cartao">
+                        <img
+                            src="WhatsApp Image 2026-10-14 at 23.43.10.jpeg"
+                            alt="Desenho feito por mim"
+                            loading="lazy"
+                        >
+                        <div class="conteudo">
+                            <p class="categoria">Minha arte</p>
+                            <h3>Um desenho meu -_-</h3>
+                            <p>Um dos meus desenhos.</p>
+                        </div>
+                    </article>
+
+                    <article class="cartao">
+                        <img
+                            src="images (22).jpg"
+                            alt="Capa de Omniscient Reader’s Viewpoint"
+                            loading="lazy"
+                        >
+                        <div class="conteudo">
+                            <p class="categoria">Novel favorita</p>
+                            <h3>Omniscient Reader’s Viewpoint</h3>
+                            <p>Minha novel favorita!</p>
+                            <a
+                                class="botao"
+                                href="https://www.amazon.com.br/Omniscient-Readers-Viewpoint-Novel-Vol/dp/B0DK8D2642"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Ver novel na Amazon ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="cartao">
+                        <img
+                            src="images (21).jpg"
+                            alt="Imagem de Look Back"
+                            loading="lazy"
+                        >
+                        <div class="conteudo">
+                            <p class="categoria">Filme favorito</p>
+                            <h3>Look Back</h3>
+                            <p>Amo esse filme, baseado na obra de Tatsuki Fujimoto.</p>
+                            <a
+                                class="botao"
+                                href="https://www.amazon.com.br/Look-Back-Tatsuki-Fujimoto/dp/1974734641"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Ver livro que inspirou o filme ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="cartao">
+                        <img
+                            src="x53xou48eojf1.png"
+                            alt="Kim Dokja, de Omniscient Reader’s Viewpoint"
+                            loading="lazy"
+                        >
+                        <div class="conteudo">
+                            <p class="categoria">Personagem favorito</p>
+                            <h3>Kim Dokja</h3>
+                            <p>Meu personagem favorito de Omniscient Reader’s Viewpoint.</p>
+                            <a
+                                class="botao"
+                                href="https://omniscient-readers-viewpoint.fandom.com/wiki/Kim_Dokja"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Conhecer o personagem ↗</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section class="secao" id="viagens" aria-labelledby="titulo-viagens">
+                <p class="etiqueta">Além da tela</p>
+                <h2 class="titulo-secao" id="titulo-viagens">Memórias e próximos destinos</h2>
+
+                <div class="grade">
+                    <article class="cartao viagem">
+                        <img
+                            src="674b76df-4390-4bfe-9772-e8c884d32884.jpg"
+                            alt="Orlando, nos Estados Unidos"
+                            loading="lazy"
+                        >
+                        <div class="conteudo">
+                            <p class="categoria">Já visitei</p>
+                            <h3>Orlando</h3>
+                            <p>
+                                Visitei Orlando quando tinha 8 anos.
+                                Foi muito legal e quero voltar mais vezes!
+                            </p>
+                            <a
+                                class="botao"
+                                href="https://pt.wikipedia.org/wiki/Orlando"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Sobre Orlando ↗</a>
+                        </div>
+                    </article>
+
+                    <article class="cartao viagem">
+                        <img
+                            src="tigers-nest-2691190_1280.jpg"
+                            alt="Imagem relacionada ao Butão"
+                            loading="lazy"
+                        >
+                        <div class="conteudo">
+                            <p class="categoria">Quero conhecer</p>
+                            <h3>Butão</h3>
+                            <p>
+                                Tenho curiosidade de conhecer o Butão,
+                                sua cultura e suas tradições. É um destino
+                                que gostaria de explorar.
+                            </p>
+                            <a
+                                class="botao"
+                                href="https://pt.wikipedia.org/wiki/But%C3%A3o"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >Sobre o Butão ↗</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Lukas Theodoro Fernandes · Meu pequeno espaço na internet.</p>
+            <a href="index.html">← Página inicial</a>
+        </footer>
+    </div>
+</body>
+</html>
